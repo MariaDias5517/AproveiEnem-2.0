@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ICONES -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/assets/css/telalogin.css">
+
+    <title>Login</title>
+</head>
+
+<body>
+
+<main id="container">
+
+    <!-- FORM LOGIN -->
+    <form action="/login" method="POST" id="login_form">
+
+        <!-- TITULO -->
+        <div id="form_header">
+            <h1>Login</h1>
+        </div>
+
+        <!-- ICONES -->
+        <div id="social_media">
+
+            <a href="#">
+                <img src="assets/assets/images/facebook.png">
+            </a>
+
+            <a href="#">
+                <img src="assets/assets/images/google.png">
+            </a>
+
+            <a href="#">
+                <img src="assets/assets/images/github.png">
+            </a>
+
+        </div>
+        <p id="mensagemErro" style="color:red;"></p>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const erro = params.get("erro");
+
+            const mensagem = document.getElementById("mensagemErro");
+
+            if(erro === "naoexiste"){
+                mensagem.innerHTML =
+                    "Esse email não está cadastrado. Faça seu cadastro para continuar.";
+            }
+
+            if(erro === "senha"){
+                mensagem.innerHTML =
+                    "Senha incorreta. Tente novamente.";
+            }
+        </script>
+
+        <!-- CAMPOS -->
+        <div id="inputs">
+
+            <!-- EMAIL -->
+            <div class="input-box">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required>
+
+                </div>
+
+            </div>
+
+            <!-- SENHA -->
+            <div class="input-box">
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <div class="input-field">
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            required>
+
+                </div>
+
+                <div id="forgot_password">
+                    <a href="#">
+                        Esqueceu sua senha?
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BOTÃO -->
+        <button type="submit" id="login_button">
+            Login
+        </button>
+
+    </form>
+
+</main>
+
+<script src="assets/assets/js/script.js"></script>
+
+</body>
+</html>

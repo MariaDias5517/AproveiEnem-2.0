@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ICONS -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <title>Matérias</title>
+
+  <!-- CSS ORIGINAL -->
+  <link rel="stylesheet" href="assets/assets/css/portTerias.css" />
+
+  <style>
+    /* ========= BODY ========= */
+
+    body {
+      background: #f5f7ff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* ========= HERO ========= */
+
+    .materias-hero {
+
+      margin-left: 290px;
+      margin-top: 100px;
+      margin-right: 40px;
+
+      background: linear-gradient(135deg, #4f46e5, #3b82f6);
+
+      border-radius: 30px;
+
+      padding: 50px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      overflow: hidden;
+
+      color: white;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .hero-badge {
+
+      background: rgba(255, 255, 255, 0.2);
+
+      padding: 10px 18px;
+
+      border-radius: 30px;
+
+      font-size: 14px;
+
+      display: inline-block;
+
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 {
+
+      font-size: 52px;
+
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #c7d2fe;
+    }
+
+    .hero-text p {
+
+      font-size: 17px;
+
+      line-height: 1.7;
+
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+
+      border: none;
+
+      padding: 14px 28px;
+
+      border-radius: 14px;
+
+      font-size: 15px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+    }
+
+    .primary-btn {
+      background: white;
+      color: #4f46e5;
+    }
+
+    .secondary-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-4px);
+    }
+
+
+    /* ========= TITULOS ========= */
+
+    .section-header {
+
+      margin-left: 300px;
+      margin-top: 50px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 15px;
+    }
+
+    .section-line {
+
+      width: 7px;
+      height: 35px;
+
+      border-radius: 10px;
+    }
+
+    .humanas .section-line {
+      background: #ec4899;
+    }
+
+    .exatas .section-line {
+      background: #3b82f6;
+    }
+
+    .linguagens .section-line {
+      background: #22c55e;
+    }
+
+    .section-header h2 {
+
+      font-size: 32px;
+
+      color: #111827;
+    }
+
+    /* ========= GRID ========= */
+
+    .subjects-grid {
+
+      margin-left: 300px;
+      margin-right: 40px;
+      margin-top: 25px;
+      margin-bottom: 25px;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+      gap: 25px;
+    }
+
+    /* ========= CARD ========= */
+
+    .modern-card {
+
+      background: white;
+
+      border-radius: 25px;
+
+      overflow: hidden;
+
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+      transition: 0.3s;
+    }
+
+    .modern-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card-top {
+
+      height: 160px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-top img {
+      width: 90px;
+    }
+
+    /* CORES */
+
+    .pink {
+      background: #fce7f3;
+    }
+
+    .orange {
+      background: #ffedd5;
+    }
+
+    .purple {
+      background: #ede9fe;
+    }
+
+    .blue {
+      background: #dbeafe;
+    }
+
+    .indigo {
+      background: #c7d2fe;
+    }
+
+    .cyan {
+      background: #cffafe;
+    }
+
+    .yellow {
+      background: #fef9c3;
+    }
+
+    .green {
+      background: #dcfce7;
+    }
+
+    .red {
+      background: #fee2e2;
+    }
+
+    /* ========= CONTEUDO ========= */
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card-content h3 {
+
+      font-size: 24px;
+
+      margin-bottom: 12px;
+
+      color: #111827;
+    }
+
+    .card-content p {
+
+      color: #6b7280;
+
+      line-height: 1.6;
+
+      margin-bottom: 20px;
+    }
+
+    .card-content button {
+
+      width: 100%;
+
+      border: none;
+
+      background: #4f46e5;
+
+      color: white;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      font-size: 15px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+    }
+
+    .card-content button:hover {
+      background: #4338ca;
+    }
+
+    /* ========= RESPONSIVO ========= */
+
+    @media(max-width: 900px) {
+
+      .materias-hero,
+      .section-header,
+      .subjects-grid {
+
+        margin-left: 100px;
+      }
+
+      .materias-hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 30px;
+      }
+
+      .hero-text h1 {
+        font-size: 38px;
+      }
+
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+  <div class="logo_item">
+
+    <i class="bx bx-menu" id="sidebarOpen"></i>
+
+    <img src="assets/assets/images/logo2.png"
+         alt="AproveiEnem Logo"
+         style="width: 50px; height: auto;">
+
+    AproveiEnem
+
+  </div>
+
+  <div class="search_bar">
+    <input type="text" placeholder="Pesquisar" />
+  </div>
+
+  <div class="navbar_content">
+
+    <i class="bi bi-grid"></i>
+
+    <i class='bx bx-sun' id="darkLight"></i>
+
+    <i class='bx bx-bell'></i>
+
+    <img src="assets/assets/images/profile.jpg"
+         alt=""
+         class="profile" />
+
+  </div>
+
+</nav>
+
+<!-- SIDEBAR -->
+
+<nav class="sidebar">
+
+  <div class="menu_content">
+
+    <ul class="menu_items">
+
+      <div class="menu_title menu_dahsboard"></div>
+
+      <li class="item">
+        <div href="telaprincipal.html"
+             class="nav_link submenu_item">
+        </div>
+      </li>
+
+      <!-- INICIO -->
+
+      <li class="item">
+
+        <div href="telaprincipal.html"
+             class="nav_link submenu_item">
+
+            <span class="navlink_icon">
+              <i class="bx bx-home-alt"></i>
+            </span>
+
+          <span class="navlink">
+              Inicio
+            </span>
+
+        </div>
+
+      </li>
+
+      <!-- MATERIAS -->
+
+      <li class="item">
+
+        <a href="telamaterias.html"
+           class="nav_link active">
+
+            <span class="navlink_icon">
+              <i class='bx bx-layer'></i>
+            </span>
+
+          <span class="navlink">
+              Matérias
+            </span>
+
+        </a>
+
+      </li>
+
+      <!-- CALENDARIO -->
+
+      <li class="item">
+
+        <a href="calendario.html"
+           class="nav_link">
+
+            <span class="navlink_icon">
+              <i class='bx bx-calendar-check'></i>
+            </span>
+
+          <span class="navlink">
+              Calendário
+            </span>
+
+        </a>
+
+      </li>
+
+      <!-- QUESTOES -->
+
+      <li class="item">
+
+        <a href="teladequestoes.html"
+           class="nav_link">
+
+            <span class="navlink_icon">
+              <i class='bx bx-task'></i>
+            </span>
+
+          <span class="navlink">
+              Questões
+            </span>
+
+        </a>
+
+      </li>
+
+    </ul>
+
+    <!-- CONFIG -->
+
+    <ul class="menu_items">
+
+      <li class="item">
+
+        <a href="configuracao.html"
+           class="nav_link">
+
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+
+          <span class="navlink">
+              Configuração
+            </span>
+
+        </a>
+
+      </li>
+
+    </ul>
+
+    <!-- BOTTOM -->
+
+    <div class="bottom_content">
+
+      <div class="bottom expand_sidebar">
+        <span>Abrir</span>
+        <i class='bx bx-log-in'></i>
+      </div>
+
+      <div class="bottom collapse_sidebar">
+        <span>Fechar</span>
+        <i class='bx bx-log-out'></i>
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<!-- HERO -->
+
+<div class="materias-hero">
+
+  <div class="hero-text">
+
+      <span class="hero-badge">
+        Plataforma de Estudos
+      </span>
+
+    <h1>
+      Explore suas <span>Matérias</span>
+    </h1>
+
+    <p style="color: white;">
+      Escolha uma disciplina,
+      pratique exercícios e revise conteúdos
+      de forma moderna e organizada.
+    </p>
+
+    <div class="hero-buttons">
+
+      <button class="primary-btn">
+        Começar Agora
+      </button>
+
+      <button class="secondary-btn">
+        Explorar
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="hero-image">
+    <img src="assets/images/imagem_teladeMaterias.png" style="width: 400px; height: auto;">  </div>
+
+</div>
+
+<!-- HUMANAS -->
+
+<div class="section-header humanas">
+
+  <div class="section-line"></div>
+
+  <h2>Humanas</h2>
+
+</div>
+
+<div class="subjects-grid">
+
+  <!-- PORTUGUES -->
+
+  <div class="modern-card">
+
+    <div class="card-top pink">
+      <img src="assets/assets/images/livro.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Português</h3>
+
+      <p>
+        Interpretação textual,
+        gramática e literatura.
+      </p>
+
+      <a href="telaAssunto.html">
+        <button>Acessar</button>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- REDAÇÃO -->
+
+  <div class="modern-card">
+
+    <div class="card-top orange">
+      <img src="assets/assets/images/exame.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Redação</h3>
+
+      <p>
+        Estrutura textual,
+        argumentação e competências ENEM.
+      </p>
+
+      <button>Acessar</button>
+
+    </div>
+
+  </div>
+
+  <!-- LITERATURA -->
+
+  <div class="modern-card">
+
+    <div class="card-top purple">
+      <img src="assets/assets/images/livro%20(1).png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Literatura</h3>
+
+      <p>
+        Escolas literárias
+        e interpretação.
+      </p>
+
+      <button>Acessar</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- EXATAS -->
+
+<div class="section-header exatas">
+
+  <div class="section-line"></div>
+
+  <h2>Exatas</h2>
+
+</div>
+
+<div class="subjects-grid">
+
+  <!-- QUIMICA -->
+
+  <div class="modern-card">
+
+    <div class="card-top blue">
+      <img src="assets/assets/images/ciencia.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Química</h3>
+
+      <p>
+        Reações químicas,
+        cálculos e química orgânica.
+      </p>
+
+      <button>Acessar</button>
+
+    </div>
+
+  </div>
+
+  <!-- MATEMATICA -->
+
+  <div class="modern-card">
+
+    <div class="card-top indigo">
+      <img src="assets/assets/images/quadro-negro.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Matemática</h3>
+
+      <p>
+        Álgebra, geometria,
+        porcentagem e estatística.
+      </p>
+
+      <a href="matematica.html">
+        <button>Acessar</button>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- FISICA -->
+
+  <div class="modern-card">
+
+    <div class="card-top cyan">
+      <img src="assets/assets/images/fisica.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Física</h3>
+
+      <p>
+        Mecânica, eletricidade
+        e termologia.
+      </p>
+
+      <button>Acessar</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- LINGUAGENS -->
+
+<div class="section-header linguagens">
+
+  <div class="section-line"></div>
+
+  <h2>Linguagens & Artes</h2>
+
+</div>
+
+<div class="subjects-grid">
+
+  <!-- ARTES -->
+
+  <div class="modern-card">
+
+    <div class="card-top yellow">
+      <img src="assets/assets/images/teatro.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Artes</h3>
+
+      <p>
+        Arte moderna,
+        teatro e cultura.
+      </p>
+
+      <button>Acessar</button>
+
+    </div>
+
+  </div>
+
+  <!-- INGLES -->
+
+  <div class="modern-card">
+
+    <div class="card-top green">
+      <img src="assets/assets/images/ingles.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Inglês</h3>
+
+      <p>
+        Gramática,
+        vocabulário e interpretação.
+      </p>
+
+      <button>Acessar</button>
+
+    </div>
+
+  </div>
+
+  <!-- ESPANHOL -->
+
+  <div class="modern-card">
+
+    <div class="card-top red">
+      <img src="assets/assets/images/espanha.png">
+    </div>
+
+    <div class="card-content">
+
+      <h3>Espanhol</h3>
+
+      <p>
+        Verbos,
+        leitura e interpretação textual.
+      </p>
+
+      <button>Acessar</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- JS -->
+
+<script src="assets/assets/js/portTerias.js"></script>
+
+</body>
+
+</html>

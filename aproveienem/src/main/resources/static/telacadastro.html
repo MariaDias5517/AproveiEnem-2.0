@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/assets/css/telacadastro.css">
+
+    <title>Cadastro</title>
+</head>
+
+<body>
+
+<main id="container">
+
+    <form action="/cadastro" method="POST" id="cadastro_form">
+
+        <!-- HEADER -->
+        <div id="form_header">
+
+            <h1>Cadastro</h1>
+
+        </div>
+
+        <!-- MENSAGEM -->
+        <div id="mensagemCadastro"
+             style="
+        color:red;
+        font-size:14px;
+        margin-top:10px;
+        margin-bottom:15px;
+     ">
+        </div>
+
+        <!-- SOCIAL -->
+        <div id="social_media">
+
+            <a href="#">
+                <img src="assets/assets/images/facebook.png" alt="">
+            </a>
+
+            <a href="#">
+                <img src="assets/assets/images/google.png" alt="Google">
+            </a>
+
+            <a href="#">
+                <img src="assets/assets/images/github.png" alt="">
+            </a>
+
+        </div>
+
+        <!-- INPUTS -->
+        <div id="inputs">
+
+            <!-- NOME -->
+            <div class="input-box">
+                <label for="nome">
+                    Nome
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                required>
+                    </div>
+                </label>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="input-box">
+                <label for="email">
+                    E-mail
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required>
+                    </div>
+                </label>
+            </div>
+
+            <!-- SENHA -->
+            <div class="input-box">
+                <label for="senha">
+                    Senha
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-key"></i>
+
+                        <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                required>
+                    </div>
+                </label>
+            </div>
+
+            <!-- CONFIRMAR SENHA -->
+            <div class="input-box">
+                <label for="csenha">
+                    Confirmar Senha
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-key"></i>
+
+                        <input
+                                type="password"
+                                id="csenha"
+                                name="csenha"
+                                required>
+                    </div>
+                </label>
+            </div>
+
+        </div>
+
+        <!-- BOTÃO -->
+        <button type="submit"
+                class="botao"
+                id="cadastrar_button">
+
+            Cadastrar
+        </button>
+
+    </form>
+
+</main>
+
+<!-- SCRIPT DE ERROS -->
+<script>
+
+    const params = new URLSearchParams(window.location.search);
+
+    const erro = params.get("erro");
+
+    const mensagem = document.getElementById("mensagemCadastro");
+
+    // EMAIL JÁ CADASTRADO
+    if(erro === "email"){
+
+        mensagem.innerHTML =
+            'Esse email já está cadastrado. ' +
+            '<a href="/telalogin.html" ' +
+            'style="color:#ff4d4d; font-weight:bold; text-decoration:none;">' +
+            'Efetue o login' +
+            '</a>';
+
+    }
+</script>
+
+<!-- JS -->
+<script src="assets/assets/js/scriptLogCad.js"></script>
+
+</body>
+</html>

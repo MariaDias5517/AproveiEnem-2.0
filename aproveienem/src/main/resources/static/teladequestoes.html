@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- BOXICONS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <title>Questões</title>
+
+    <!-- CSS DA SUA NAVBAR/SIDEBAR -->
+    <link rel="stylesheet" href="assets/assets/css/portTerias.css" />
+
+    <style>
+        /* CONTEÚDO */
+
+        .questions-container {
+            margin-left: 300px;
+            padding: 110px 40px 40px;
+        }
+
+        /* BANNER */
+
+        .questions-banner {
+            background: linear-gradient(90deg, #4f46e5, #3b82f6);
+            border-radius: 22px;
+            padding: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .questions-banner h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .questions-banner p {
+            font-size: 16px;
+        }
+
+        .questions-banner img {
+            width: 140px;
+        }
+
+        /* FILTROS */
+
+        .filters {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .filter-box {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            min-width: 220px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-box label {
+            display: block;
+            margin-bottom: 10px;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .filter-box select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            background: #f9fafb;
+            outline: none;
+        }
+
+        /* TITULO */
+
+        .section-title {
+            font-size: 32px;
+            color: #4f46e5;
+            margin-bottom: 25px;
+        }
+
+        /* GRID */
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        /* CARD */
+
+        .question-card {
+            background: white;
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .question-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 34px;
+            margin-bottom: 18px;
+        }
+
+        /* CORES */
+
+        .mat {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .bio {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .port {
+            background: #fce7f3;
+            color: #db2777;
+        }
+
+        .qui {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+
+        .fis {
+            background: #cffafe;
+            color: #0891b2;
+        }
+
+        .red {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        /* TEXTO */
+
+        .question-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .question-card p {
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        /* DIFICULDADE */
+
+        .difficulty {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .difficulty span {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 7px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+
+        /* BOTÃO */
+
+        .start-btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 14px;
+            background: #4f46e5;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .start-btn:hover {
+            background: #4338ca;
+        }
+
+        /* RESPONSIVO */
+
+        @media(max-width: 900px) {
+
+            .questions-container {
+                margin-left: 90px;
+                padding: 110px 20px 20px;
+            }
+
+            .questions-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+    <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+
+        <img src="assets/assets/images/logo2.png"
+             alt="AproveiEnem Logo"
+             style="width: 50px; height: auto;">
+
+        AproveiEnem
+    </div>
+
+    <div class="search_bar">
+        <input type="text" placeholder="Pesquisar" />
+    </div>
+
+    <div class="navbar_content">
+        <i class="bi bi-grid"></i>
+        <i class='bx bx-sun' id="darkLight"></i>
+        <i class='bx bx-bell'></i>
+
+        <img src="assets/assets/images/profile.jpg"
+             alt=""
+             class="profile" />
+    </div>
+</nav>
+
+<!-- SIDEBAR -->
+
+<nav class="sidebar">
+
+    <div class="menu_content">
+
+        <ul class="menu_items">
+
+            <div class="menu_title menu_dahsboard"></div>
+
+            <li class="item">
+                <div href="telaprincipal.html"
+                     class="nav_link submenu_item">
+                </div>
+            </li>
+
+            <!-- INICIO -->
+
+            <li class="item">
+                <div href="telaprincipal.html"
+                     class="nav_link submenu_item">
+
+            <span class="navlink_icon">
+              <i class="bx bx-home-alt"></i>
+            </span>
+
+                    <span class="navlink">
+              Inicio
+            </span>
+
+                </div>
+            </li>
+
+            <!-- MATERIAS -->
+
+            <li class="item">
+                <a href="telamaterias.html"
+                   class="nav_link">
+
+            <span class="navlink_icon">
+              <i class='bx bx-layer'></i>
+            </span>
+
+                    <span class="navlink">
+              Matérias
+            </span>
+
+                </a>
+            </li>
+
+            <!-- CALENDARIO -->
+
+            <li class="item">
+                <a href="calendario.html"
+                   class="nav_link">
+
+            <span class="navlink_icon">
+              <i class='bx bx-calendar-check'></i>
+            </span>
+
+                    <span class="navlink">
+              Calendário
+            </span>
+
+                </a>
+            </li>
+
+            <!-- QUESTOES -->
+
+            <li class="item">
+                <a href="teladequestoes.html"
+                   class="nav_link active">
+
+            <span class="navlink_icon">
+              <i class='bx bx-task'></i>
+            </span>
+
+                    <span class="navlink">
+              Questões
+            </span>
+
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- CONFIG -->
+
+        <ul class="menu_items">
+
+            <li class="item">
+                <a href="configuracao.html"
+                   class="nav_link">
+
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+
+                    <span class="navlink">
+              Configuração
+            </span>
+
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- BOTTOM -->
+
+        <div class="bottom_content">
+
+            <div class="bottom expand_sidebar">
+                <span>Abrir</span>
+                <i class='bx bx-log-in'></i>
+            </div>
+
+            <div class="bottom collapse_sidebar">
+                <span>Fechar</span>
+                <i class='bx bx-log-out'></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- CONTEUDO -->
+
+<main class="questions-container">
+
+    <!-- BANNER -->
+
+    <div class="questions-banner">
+
+        <div>
+
+            <h1>Banco de Questões</h1>
+
+            <p style="color: white;">
+                Escolha sua matéria, dificuldade
+                e pratique exercícios estilo ENEM.
+            </p>
+
+        </div>
+
+        <img src="assets/assets/images/exame.png">
+
+    </div>
+
+    <!-- FILTROS -->
+
+    <div class="filters">
+
+        <div class="filter-box">
+
+            <label>Matéria</label>
+
+            <select>
+                <option>Todas</option>
+                <option>Matemática</option>
+                <option>Português</option>
+                <option>Biologia</option>
+                <option>Química</option>
+                <option>Física</option>
+                <option>Redação</option>
+            </select>
+
+        </div>
+
+        <div class="filter-box">
+
+            <label>Dificuldade</label>
+
+            <select>
+                <option>Fácil</option>
+                <option>Médio</option>
+                <option>Difícil</option>
+            </select>
+
+        </div>
+
+        <div class="filter-box">
+
+            <label>Quantidade</label>
+
+            <select>
+                <option>5 Questões</option>
+                <option>10 Questões</option>
+                <option>15 Questões</option>
+                <option>20 Questões</option>
+            </select>
+
+        </div>
+
+    </div>
+
+    <!-- TITULO -->
+
+    <h2 class="section-title">
+        Escolha uma Matéria
+    </h2>
+
+    <!-- CARDS -->
+
+    <div class="questions-grid">
+
+        <!-- MATEMATICA -->
+
+        <div class="question-card">
+
+            <div class="question-icon mat">
+                <i class='bx bx-calculator'></i>
+            </div>
+
+            <h3>Matemática</h3>
+
+            <p>
+                Álgebra, geometria,
+                estatística e matemática financeira.
+            </p>
+
+            <div class="difficulty">
+                <span>Fácil</span>
+                <span>Médio</span>
+                <span>Difícil</span>
+            </div>
+
+            <button class="start-btn"
+                    onclick="window.location.href='questaoMatematica.html'">
+                Resolver Questões
+            </button>
+
+        </div>
+
+        <!-- PORTUGUES -->
+
+        <div class="question-card">
+
+            <div class="question-icon port">
+                <i class='bx bx-book-open'></i>
+            </div>
+
+            <h3>Português</h3>
+
+            <p>
+                Interpretação textual,
+                gramática e literatura.
+            </p>
+
+            <div class="difficulty">
+                <span>Fácil</span>
+                <span>Médio</span>
+                <span>Difícil</span>
+            </div>
+
+            <button class="start-btn">
+                Resolver Questões
+            </button>
+
+        </div>
+
+        <!-- BIOLOGIA -->
+
+        <div class="question-card">
+
+            <div class="question-icon bio">
+                <i class='bx bx-leaf'></i>
+            </div>
+
+            <h3>Biologia</h3>
+
+            <p>
+                Ecologia, genética,
+                fisiologia humana e evolução.
+            </p>
+
+            <div class="difficulty">
+                <span>Fácil</span>
+                <span>Médio</span>
+                <span>Difícil</span>
+            </div>
+
+            <button class="start-btn">
+                Resolver Questões
+            </button>
+
+        </div>
+
+        <!-- QUIMICA -->
+
+        <div class="question-card">
+
+            <div class="question-icon qui">
+                <i class='bx bx-flask'></i>
+            </div>
+
+            <h3>Química</h3>
+
+            <p>
+                Ligações químicas,
+                reações e química orgânica.
+            </p>
+
+            <div class="difficulty">
+                <span>Fácil</span>
+                <span>Médio</span>
+                <span>Difícil</span>
+            </div>
+
+            <button class="start-btn">
+                Resolver Questões
+            </button>
+
+        </div>
+
+        <!-- FISICA -->
+
+        <div class="question-card">
+
+            <div class="question-icon fis">
+                <i class='bx bx-atom'></i>
+            </div>
+
+            <h3>Física</h3>
+
+            <p>
+                Mecânica, eletricidade,
+                cinemática e termologia.
+            </p>
+
+            <div class="difficulty">
+                <span>Fácil</span>
+                <span>Médio</span>
+                <span>Difícil</span>
+            </div>
+
+            <button class="start-btn">
+                Resolver Questões
+            </button>
+
+        </div>
+
+        <!-- REDAÇÃO -->
+
+        <div class="question-card">
+
+            <div class="question-icon red">
+                <i class='bx bx-edit'></i>
+            </div>
+
+            <h3>Redação</h3>
+
+            <p>
+                Competências ENEM,
+                argumentação e estrutura textual.
+            </p>
+
+            <div class="difficulty">
+                <span>Fácil</span>
+                <span>Médio</span>
+                <span>Difícil</span>
+            </div>
+
+            <button class="start-btn">
+                Resolver Questões
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+<!-- JS -->
+
+<script src="assets/assets/js/portTerias.js"></script>
+
+</body>
+
+</html>
