@@ -156,9 +156,7 @@ http://localhost:8080
 ---
 
 # 7. GitHub
-
-O projeto ainda não foi publicado no GitHub.
-
+(https://github.com/MariaDias5517/AproveiEnem-2.0.git)
 ---
 
 # 8. Testes realizados
