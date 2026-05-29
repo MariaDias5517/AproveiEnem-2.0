@@ -19,6 +19,11 @@ public class Evento {
 
     private int ano;
 
+    // RELACIONAMENTO COM USUARIO
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     public Evento() {
     }
 
@@ -64,5 +69,14 @@ public class Evento {
 
     public void setAno(int ano) {
         this.ano = ano;
+    }
+
+    // GET E SET DO USUARIO
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

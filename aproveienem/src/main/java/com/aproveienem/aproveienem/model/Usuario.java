@@ -1,6 +1,8 @@
 package com.aproveienem.aproveienem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -15,6 +17,12 @@ public class Usuario {
     private String email;
 
     private String senha;
+
+    // RELACIONAMENTO COM EVENTOS
+    @OneToMany(mappedBy = "usuario")
+
+    @JsonIgnore
+    private List<Evento> eventos;
 
     public Usuario(){}
 
@@ -44,5 +52,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
     }
 }

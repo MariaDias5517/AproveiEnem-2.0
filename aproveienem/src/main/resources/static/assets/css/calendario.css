@@ -103,6 +103,18 @@
   .calendar .month .next:hover {
     color: var(--primary-clr);
   }
+
+#login_button{
+  border: none;
+  background:#F3735E;
+  padding: 7px;
+  border-radius: 20px;
+  color: #ffff;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  width: 300px;
+}
   .calendar .weekdays {
     width: 100%;
     height: 100px;
@@ -289,37 +301,47 @@
     flex-direction: column;
     padding-left: 4px;
   }
-  .events .event {
-    position: relative;
-    width: 95%;
-    min-height: 70px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-    padding: 0 20px;
-    padding-left: 50px;
-    color: #fff;
-    background: linear-gradient(90deg, #aeb0b6, transparent);
-    cursor: pointer;
-  }
+.events .event {
+  position: relative;
+  width: 95%;
+  min-height: 85px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 20px;
+  padding-left: 50px;
+
+  background: linear-gradient(90deg, #dbeafe, #f8fafc);
+  border-left: 6px solid #2563eb;
+
+  border-radius: 12px;
+  margin-bottom: 12px;
+
+  color: #1e293b;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
   /* even event */
-  .events .event:nth-child(even) {
-    background: transparent;
-  }
-  .events .event:hover {
-    background: linear-gradient(90deg, var(--primary-clr), transparent);
-  }
+.events .event:nth-child(even) {
+  background: linear-gradient(90deg, #e0f2fe, #f8fafc);
+}
+.events .event:hover {
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  transform: translateX(5px);
+  color: white;
+}
   .events .event .title {
     display: flex;
     align-items: center;
     pointer-events: none;
   }
-  .events .event .title .event-title {
-    font-size: 1rem;
-    font-weight: 400;
-    margin-left: 20px;
-  }
+.events .event .title .event-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 20px;
+}
   .events .event i {
     color: var(--primary-clr);
     font-size: 0.5rem;
@@ -823,5 +845,21 @@
     .sidebar.close .bottom_content {
       left: -100%;
     }
-  }/*fim barralateral*/ 
-  
+  }/*fim barralateral*/
+.edit-btn{
+  background-color: #F3735E;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+  transition: 0.3s ease;
+}
+
+.edit-btn:hover{
+  background-color: #e45f49;
+  transform: scale(1.05);
+}

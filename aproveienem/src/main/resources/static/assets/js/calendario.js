@@ -85,6 +85,7 @@ async function carregarEventos() {
         year: Number(evento.ano),
         events: [
           {
+            id: evento.id,
             title: evento.titulo,
             time: evento.horario
           }
@@ -334,7 +335,6 @@ function getActiveDay(dateNumber) {
 /* =========================
    MOSTRAR EVENTOS
 ========================= */
-
 function updateEvents(date) {
 
   let events = "";
@@ -351,6 +351,7 @@ function updateEvents(date) {
 
         events += `
         <div class="event">
+
           <div class="title">
             <i class="fas fa-circle"></i>
             <h3 class="event-title">${event.title}</h3>
@@ -359,6 +360,15 @@ function updateEvents(date) {
           <div class="event-time">
             <span>${event.time}</span>
           </div>
+
+          <div class="event-buttons">
+
+            <button class="edit-btn">
+              Editar
+            </button>
+
+          </div>
+
         </div>
         `;
 
@@ -546,26 +556,113 @@ eventsContainer.addEventListener("click", async (e) => {
 
   if (!eventoDiv) return;
 
+  const titulo =
+      eventoDiv.querySelector(".event-title").innerText;
+
+  const eventoEncontrado = eventsArr.find((evento) =>
+
+      evento.day === activeDay &&
+      evento.month === month + 1 &&
+      evento.year === year &&
+      evento.events.some(ev => ev.title === titulo)
+
+  );
+
+  if (!eventoEncontrado) return;
+
+  const eventoInterno =
+      eventoEncontrado.events.find(ev => ev.title === titulo);
+
+  /* =========================
+     EDITAR EVENTO
+  ========================= */
+
+  if (e.target.classList.contains("edit-btn")) {
+
+    const novoTitulo =
+        prompt("Digite o novo título:", eventoInterno.title);
+
+    if (!novoTitulo) return;
+
+    const horarioAtual =
+        eventoInterno.time.split(" - ");
+
+    const novoHorarioInicio =
+        prompt(
+            "Digite novo horário inicial:",
+            horarioAtual[0]
+        );
+
+    if (!novoHorarioInicio) return;
+
+    const novoHorarioFim =
+        prompt(
+            "Digite novo horário final:",
+            horarioAtual[1]
+        );
+
+    if (!novoHorarioFim) return;
+
+    try {
+
+      const resposta = await fetch(
+          `http://localhost:8080/evento/${eventoInterno.id}`,
+          {
+
+            method: "PUT",
+
+            headers: {
+              "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+              titulo: novoTitulo,
+
+              horario:
+                  novoHorarioInicio + " - " + novoHorarioFim,
+              dia: activeDay,
+
+              mes: month + 1,
+
+              ano: year
+
+            })
+
+          }
+      );
+
+      if (!resposta.ok) {
+
+        alert("Erro ao atualizar");
+        return;
+
+      }
+
+      alert("Evento atualizado!");
+
+      carregarEventos();
+
+    } catch (erro) {
+
+      console.log(erro);
+
+    }
+
+    return;
+
+  }
+
+  /* =========================
+     DELETAR EVENTO
+  ========================= */
+
   if (confirm("Deseja deletar esse evento?")) {
-
-    const titulo =
-        eventoDiv.querySelector(".event-title").innerText;
-
-    const eventoEncontrado = eventsArr.find((evento) =>
-
-        evento.day === activeDay &&
-        evento.month === month + 1 &&
-        evento.year === year &&
-        evento.events.some(ev => ev.title === titulo)
-
-    );
-
-    if (!eventoEncontrado) return;
 
     try {
 
       await fetch(
-          `http://localhost:8080/evento/${eventoEncontrado.id}`,
+          `http://localhost:8080/evento/${eventoInterno.id}`,
           {
             method: "DELETE"
           }
@@ -582,7 +679,6 @@ eventsContainer.addEventListener("click", async (e) => {
   }
 
 });
-
 /* =========================
    CONVERTER HORA
 ========================= */
